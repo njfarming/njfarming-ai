@@ -62,7 +62,7 @@ export default function Navbar() {
             href="/"
             className="text-2xl font-bold flex items-center gap-2 text-green-700 hover:text-green-800"
           >
-            🐷 Small Scale Pig Farming
+            🐷 NJ Pig Farming
           </Link>
 
           <button

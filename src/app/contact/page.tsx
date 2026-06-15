@@ -19,7 +19,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const mailtoLink = `mailto:info@njfarming.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:njfarming9@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
     )}`;
     window.open(mailtoLink);
@@ -48,17 +48,17 @@ export default function ContactPage() {
             <ContactInfo
               icon="📧"
               title="Email"
-              details={['info@njfarming.com', 'support@njfarming.com']}
+              details={['njfarming9@gmail.com', 'njfarming9@gmail.com']}
             />
             <ContactInfo
               icon="📞"
               title="Phone"
-              details={['+91 9999-999-999', '+91 8888-888-888']}
+              details={['+91-7319723590', '+91-9730692319']}
             />
             <ContactInfo
               icon="📍"
               title="Address"
-              details={['Farming Hub, Maharashtra', 'India']}
+              details={['NJFarming Hub, Hazaribag, Jharkhand', 'India']}
             />
           </div>
 

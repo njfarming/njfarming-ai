@@ -14,7 +14,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-40 bg-[url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><rect fill=%22%23000%22 width=%22100%22 height=%22100%22/><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22%23fff%22 opacity=%220.1%22/></svg>')] bg-repeat"></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center relative z-10 px-4">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Small Scale Pig Farming</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">NJ Pig Farming</h1>
             <p className="text-xl md:text-2xl mb-8">Learn, Train & Grow Your Pig Farming Business</p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link href="/training/offline" className="bg-yellow-400 text-green-800 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition">
@@ -47,7 +47,7 @@ export default function Home() {
       {/* What's New Section with YouTube Videos */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-green-800">What New at Small Scale Pig Farming</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-green-800">What New at NJ Pig Farming</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {youtubeVideos.map(video => (
               <div key={video.id} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
@@ -272,7 +272,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">🐷 Small Scale Pig Farming</h3>
+              <h3 className="text-2xl font-bold mb-4">🐷 NJ Pig Farming</h3>
               <p className="text-gray-300 mb-4">Your trusted partner in successful pig farming</p>
               <div className="flex gap-4">
                 <a href="#" className="text-2xl hover:text-yellow-300">📧</a>
@@ -284,8 +284,8 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-bold text-lg mb-4">Contact Info</h3>
-              <p className="text-gray-300 mb-2">📧 Email: info@njfarming.com</p>
-              <p className="text-gray-300 mb-2">💬 WhatsApp: +91 9999-999-999</p>
+              <p className="text-gray-300 mb-2">📧 Email: njfarming9@gmail.com</p>
+              <p className="text-gray-300 mb-2">💬 WhatsApp: +91-7319723590</p>
               <p className="text-gray-300">📱 Instagram: @njfarming</p>
             </div>
             <div>
@@ -298,7 +298,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-green-700 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 Small Scale Pig Farming. All rights reserved.</p>
+            <p>&copy; 2026 NJ Pig Farming. All rights reserved.</p>
           </div>
         </div>
       </footer>
