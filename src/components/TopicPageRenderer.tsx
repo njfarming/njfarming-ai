@@ -4,6 +4,19 @@ import Image from "next/image";
 import React from "react";
 import { topicPages, TopicPageData } from "@/data/topicPages";
 
+function normalizeYoutubeUrl(url: string) {
+  const embedMatch = url.match(/^https?:\/\/www\.youtube\.com\/embed\/([A-Za-z0-9_-]+)/);
+  if (embedMatch) return url;
+
+  const watchMatch = url.match(/^https?:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]+)/);
+  if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+
+  const shortMatch = url.match(/^https?:\/\/youtu\.be\/([A-Za-z0-9_-]+)/);
+  if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+
+  return url;
+}
+
 function ResourceCard({
   resource,
 }: {
@@ -126,7 +139,7 @@ export default function TopicPageRenderer({ slug }: { slug: string }) {
             </p>
             <div className="mt-8 aspect-[16/9] overflow-hidden rounded-3xl border border-green-200 bg-black">
               <iframe
-                src={topic.videoUrl}
+                src={normalizeYoutubeUrl(topic.videoUrl)}
                 title={topic.title}
                 className="h-full w-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
