@@ -73,7 +73,7 @@ export default function TopicPageRenderer({ slug }: { slug: string }) {
   }
 
   return (
-    <main className="space-y-12 py-16">
+    <>
       <section className="relative overflow-hidden rounded-b-[4rem] bg-gradient-to-r from-green-800 to-emerald-700 text-white">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.4),_transparent_45%)]"></div>
         <div className="max-w-7xl mx-auto grid gap-10 px-4 py-20 md:grid-cols-[1.5fr_1fr] items-center">
@@ -127,7 +127,6 @@ export default function TopicPageRenderer({ slug }: { slug: string }) {
           ))}
         </div>
       </section>
-
       <section className="max-w-7xl mx-auto px-4 grid gap-8 lg:grid-cols-[0.9fr_0.7fr]">
         <div className="space-y-8">
           <div className="rounded-3xl bg-white p-8 shadow-lg">
@@ -183,6 +182,6 @@ export default function TopicPageRenderer({ slug }: { slug: string }) {
           </div>
         </aside>
       </section>
-    </main>
+    </>
   );
 }
