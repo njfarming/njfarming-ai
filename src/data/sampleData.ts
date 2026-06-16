@@ -52,10 +52,10 @@ export const books = [
 ];
 
 export const youtubeVideos = [
-  { id: '1', title: 'How to Start Pig Farming', url: 'https://youtube.com/embed/sample1', views: '125K' },
-  { id: '2', title: 'Farrowing Process Complete Guide', url: 'https://youtube.com/embed/sample2', views: '89K' },
-  { id: '3', title: 'Disease Prevention Tips', url: 'https://youtube.com/embed/sample3', views: '156K' },
-  { id: '4', title: 'Housing Setup Tutorial', url: 'https://youtube.com/embed/sample4', views: '95K' },
+  { id: '1', title: 'How to Start Pig Farming', image: '', url: 'https://www.youtube.com/watch?v=GjIX6OB1GKg', views: '125K' },
+  { id: '2', title: 'Farrowing Process Complete Guide', image: '/images/farrowing.png', url: 'https://www.youtube.com/watch?v=GjIX6OB1GKg', views: '89K' },
+  { id: '3', title: 'Disease Prevention Tips', image: '', url: 'https://www.youtube.com/watch?v=GjIX6OB1GKg', views: '156K' },
+  { id: '4', title: 'Housing Setup Tutorial', image: '', url: 'https://www.youtube.com/watch?v=GjIX6OB1GKg', views: '95K' },
 ];
 
 export const sampleTestimonials: Testimonial[] = [
