@@ -58,11 +58,13 @@ export default function Navbar() {
     <nav className="bg-white border-b-2 border-gray-200 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link
-            href="/"
-            className="text-2xl font-bold flex items-center gap-2 text-green-700 hover:text-green-800"
-          >
-            🐷 NJ Pig Farming
+          <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition">
+            <img
+              src="/logo.jpeg"
+              alt="NJ Farming Logo"
+              className="h-12 w-12 object-cover rounded-full border border-green-200"
+            />
+            <span className="text-xl font-bold text-green-700">NJ Farming</span>
           </Link>
 
           <button

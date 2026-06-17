@@ -51,7 +51,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex items-center justify-center z-10">
         <div className="text-center relative px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            NJ Pig Farming
+            NJ Farming
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Learn, Train & Grow Your Pig Farming Business
