@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-gray-50">
         <FarmProvider>
           <Navbar />       
-          <main className="max-w-7xl mx-auto px-4 py-8 flex-1">{children}</main>
+          <main className="max-w-7xl mx-auto px-4 py-8 flex-1 space-y-8">{children}</main>
           <Footer />
         </FarmProvider>
       </body>

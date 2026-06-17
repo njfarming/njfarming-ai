@@ -49,7 +49,7 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-green-800">
-            What New at NJ Pig Farming
+            What New at NJ Farming
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {youtubeVideos.map((video) => (

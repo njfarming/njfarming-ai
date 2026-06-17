@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">🐷 NJ Pig Farming</h3>
+            <h3 className="text-2xl font-bold mb-4">🐷 NJ Farming</h3>
             <p className="text-gray-300 mb-4">
               Your trusted partner in successful pig farming
             </p>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-green-700 pt-4 text-center text-gray-400">
-          <p>&copy; 2026 NJ Pig Farming. All rights reserved.</p>
+          <p>&copy; 2026 NJ Farming. All rights reserved.</p>
         </div>
       </div>
     </footer>
