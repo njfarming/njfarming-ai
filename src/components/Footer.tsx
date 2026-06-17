@@ -31,15 +31,43 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Contact Info</h3>
             <p className="text-gray-300 mb-2">📧 Email: njfarming9@gmail.com</p>
-            <p className="text-gray-300 mb-2">💬 WhatsApp: +91-7319723590</p>
+            <p className="text-gray-300 mb-2">💬 WhatsApp: +91-9730692319</p>
             <p className="text-gray-300">📱 Instagram: @njfarming</p>
           </div>
           <div>
             <h3 className="font-bold text-lg mb-4">Social Media</h3>
+
             <ul className="space-y-2 text-gray-300">
-              <li>📱 Instagram: @njfarming</li>
-              <li>▶️ YouTube: NJ Farming</li>
-              <li>f Facebook: NJ Farming</li>
+              <li>
+                <a
+                  href="https://www.instagram.com/nj_farming1818/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-yellow-400 transition-colors duration-200 inline-flex items-center"
+                >
+                  📱 Instagram: @njfarming
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@njfarming1818" // Replace with your exact YouTube handle URL if different
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-yellow-400 transition-colors duration-200 inline-flex items-center"
+                >
+                  ▶️ YouTube: NJ Farming
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/nj_farming1818/" // Replace with your exact Facebook page URL
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-yellow-400 transition-colors duration-200 inline-flex items-center"
+                >
+                  🔵 Facebook: NJ Farming
+                </a>
+              </li>
             </ul>
           </div>
         </div>

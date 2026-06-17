@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 interface ContactForm {
   name: string;
@@ -12,23 +13,64 @@ interface ContactForm {
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactForm>({
-    name: '', email: '', phone: '', subject: '', message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false); // Track loading state
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendEmailWithCustomerJS = () => {
+    const SERVICE_ID = "service_5pzc6t7";
+    const TEMPLATE_ID = "template_km9ew3b";
+    const PUBLIC_KEY = "cLNwbFSPYlNF186pW";
+    emailjs.init(PUBLIC_KEY);
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    });
+  };
+  const sendEmailWithAdminJS = () => {
+    const SERVICE_ID = "service_5pzc6t7";
+    const TEMPLATE_ID = "template_ir4kpqi";
+    const PUBLIC_KEY = "cLNwbFSPYlNF186pW";
+    emailjs.init(PUBLIC_KEY);
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSending(true);
 
-    const mailtoLink = `mailto:njfarming9@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    )}`;
-    window.open(mailtoLink);
+    try {
+      sendEmailWithCustomerJS();
+      sendEmailWithAdminJS();
+     
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 2000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000);
+    } catch (error: any) {
+      console.error("Failed to send email:", error);
+      alert(
+        `EmailJS Error: ${error?.text || error?.message || "Unknown network error"}`,
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -48,102 +90,157 @@ export default function ContactPage() {
             <ContactInfo
               icon="📧"
               title="Email"
-              details={['njfarming9@gmail.com', 'njfarming9@gmail.com']}
+              details={["njfarming9@gmail.com"]}
             />
-            <ContactInfo
-              icon="📞"
-              title="Phone"
-              details={['+91-7319723590', '+91-9730692319']}
-            />
+            <ContactInfo icon="📞" title="Phone" details={["+91-9730692319"]} />
             <ContactInfo
               icon="📍"
               title="Address"
-              details={['NJFarming Hub, Hazaribag, Jharkhand', 'India']}
+              details={["NJFarming Hub, Hazaribag, Jharkhand", "India"]}
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-6">Send us a Message</h2>
+              <h2 className="text-2xl font-bold text-green-800 mb-6">
+                Send us a Message
+              </h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {submitted && (
-                  <div className="bg-green-100 text-green-800 p-4 rounded-lg text-center border-l-4 border-green-600">
+                  <div className="bg-green-100 text-green-800 p-4 rounded-lg text-center border-l-4 border-green-600 mb-4 animate-fade-in">
                     ✓ Thank you! Your message has been sent successfully.
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Your Name</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Your Name
+                  </label>
                   <input
                     type="text"
                     placeholder="John Farmer"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-green-600"
+                    disabled={isSending}
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Email Address</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     placeholder="you@example.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-green-600"
+                    disabled={isSending}
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Phone Number</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     placeholder="+91 XXXX-XXXX-XXXX"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-green-600"
+                    disabled={isSending}
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Subject</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Subject
+                  </label>
                   <input
                     type="text"
                     placeholder="What is this about?"
                     value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-green-600"
+                    disabled={isSending}
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Message</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Message
+                  </label>
                   <textarea
                     placeholder="Tell us your query or message..."
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded px-4 py-3 h-32 focus:outline-none focus:border-green-600 resize-none"
+                    disabled={isSending}
                     required
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-green-700 text-white py-3 rounded font-bold hover:bg-green-800 transition"
+                  disabled={isSending}
+                  className={`w-full text-white py-3 rounded font-bold transition flex items-center justify-center ${
+                    isSending
+                      ? "bg-green-500 cursor-not-allowed"
+                      : "bg-green-700 hover:bg-green-800"
+                  }`}
                 >
-                  Send Message
+                  {isSending ? (
+                    <span className="inline-flex items-center gap-2">
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        />
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </form>
             </div>
 
             {/* Why Contact Us */}
             <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-6">Why Contact Us?</h2>
+              <h2 className="text-2xl font-bold text-green-800 mb-6">
+                Why Contact Us?
+              </h2>
               <div className="space-y-4">
                 <ReasonCard
                   icon="🐄"
@@ -179,7 +276,9 @@ export default function ContactPage() {
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-green-800 mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-green-800 mb-8 text-center">
+            Frequently Asked Questions
+          </h2>
           <div className="space-y-4">
             <FAQItem
               q="What is your response time for inquiries?"
@@ -204,21 +303,39 @@ export default function ContactPage() {
   );
 }
 
-function ContactInfo({ icon, title, details }: { icon: string; title: string; details: string[] }) {
+function ContactInfo({
+  icon,
+  title,
+  details,
+}: {
+  icon: string;
+  title: string;
+  details: string[];
+}) {
   return (
     <div className="bg-green-50 rounded-lg p-6 text-center border-t-4 border-green-600">
       <div className="text-4xl mb-4">{icon}</div>
       <h3 className="font-bold text-lg text-gray-800 mb-3">{title}</h3>
       <div className="space-y-2">
         {details.map((detail, idx) => (
-          <p key={idx} className="text-gray-700">{detail}</p>
+          <p key={idx} className="text-gray-700">
+            {detail}
+          </p>
         ))}
       </div>
     </div>
   );
 }
 
-function ReasonCard({ icon, title, desc }: { icon: string; title: string; desc: string }) {
+function ReasonCard({
+  icon,
+  title,
+  desc,
+}: {
+  icon: string;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
       <span className="text-3xl flex-shrink-0">{icon}</span>
@@ -239,7 +356,9 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         className="w-full text-left flex justify-between items-center font-semibold text-gray-800 hover:text-green-700"
       >
         {q}
-        <span className={`text-2xl transition ${open ? 'rotate-180' : ''}`}>▼</span>
+        <span className={`text-2xl transition ${open ? "rotate-180" : ""}`}>
+          ▼
+        </span>
       </button>
       {open && <p className="text-gray-600 mt-4">{a}</p>}
     </div>
