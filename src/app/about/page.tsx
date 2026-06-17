@@ -48,12 +48,12 @@ export default function ContactPage() {
             <ContactInfo
               icon="📧"
               title="Email"
-              details={['njfarming9@gmail.com', 'njfarming9@gmail.com']}
+              details={['njfarming9@gmail.com']}
             />
             <ContactInfo
               icon="📞"
               title="Phone"
-              details={['+91-7319723590', '+91-9730692319']}
+              details={['+91-9730692319']}
             />
             <ContactInfo
               icon="📍"
